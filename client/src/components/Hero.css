@@ -1,0 +1,37 @@
+.hero{
+    background-image: url('./../../public/backgroundImage.jpg');
+    background-clip: cover;
+    background-position: center;
+    background-size: 100% auto; 
+    background-repeat: no-repeat; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80vh;
+}
+.hero img{
+    width: 200px;
+}
+.hero_component{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: left;
+    margin-left: 100px;
+    width: 30%;
+}
+.hero_component h1{
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 55px;
+}
+.hero_icons{
+    gap: 20px;
+    display: flex;
+}
+.hero_year{
+    display: flex;
+}
+.hero_time{
+    display: flex;
+}
