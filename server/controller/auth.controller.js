@@ -2,18 +2,19 @@ import { person } from "../models/users.js"
 import { connectDB } from "../config/db.js"
 import  jwt from "jsonwebtoken"
 import bcrypt from 'bcryptjs';
+import cookieParser from "cookie-parser";
 
 await connectDB()
 
-
 export const  registration = async (req,res) => {
-    const {First_name, Last_name, email, username, password} = req.body
+    const {First_name, Last_name, email, username, password, role} = req.body
     const hashedPassword  = await bcrypt.hash(password, 10)
     const newUser = person({
         First_name,
         Last_name,
         email,
         username,
+        role,
         password:hashedPassword
     })
     await newUser.save()
@@ -27,6 +28,10 @@ export const login = async (req,res) => {
         res.send('Invalid credentials')
     }
     const token = jwt.sign({id: user._id}, 'Writen#token')
-    res.set('Authorization', `Bearer ${token}`)
+    res.cookie('token', token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'strict'
+    });
     res.send('welcome')
 }

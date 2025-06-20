@@ -1,7 +1,14 @@
 import jwt from 'jsonwebtoken';
+import { person } from '../models/users.js';
 
-export const verifyToken = (req, res, next) => {
-    const authHeader = req.headers['authorization']
-    if (!authHeader) return res.status(401).json({ message: 'No token provided' })
-    next()
+export const verifyToken = async (req, res, next) => {
+    const token = req.cookies.token;
+    const userId = jwt.verify(token, 'Writen#token');
+    const user = await  person.findById(userId.id)
+    if(!user){
+        res.send('please login')
+    } else {
+        req.user = user;
+        next()
+    }
 }

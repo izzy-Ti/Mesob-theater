@@ -7,6 +7,10 @@ const peronSchema = new mongoose.Schema({
     email: { type:String, required: true, unique:true},
     username:{type:String, required:true, unique:true},
     age: Date,
-    profile:{type:String, default:""}
+    profile:{type:String, default:""},
+    role: {type:String, enum: ['user', 'admin'], required:true, default:'user'},
+    favorites: {type: [String]},
+    bookings: {type: [String]},
+    waitelist: {type: [String]}
 },{timestamps:true, minimize:false})
 export const person = mongoose.model("person", peronSchema)
