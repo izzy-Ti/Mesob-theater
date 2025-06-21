@@ -7,57 +7,34 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 
 const Herosection = () => {
-  const port = 'http://localhost:3000'
+  const link = 'http://localhost:3000/'
   const [moviesList, setmoviesList] = useState([])
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(()=>{
   const Newestmovies = async () =>{
-  const response = axios.get(`${port}/movies/moviesearch`)
-
-  setmoviesList(response.data)
+      try{
+        const response = await axios.get(`http://localhost:3000/movies/movielist`)
+        setmoviesList(response.data)
+        console.log(response.data)
+      } catch (error){
+        console.log('error fetching data')
+      }
   }
+  Newestmovies();
   },[])
 
-
-  const ImageSlideshow = ({ images }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-
+  const currentMovie = moviesList[currentIndex]
+  console.log({currentMovie})
   return (
-    <div className='hero' style={{ backgroundImage: `url(${images[currentIndex]})`}}>
-      <button onClick={prevSlide}>Prev</button>
-      <img src={moviesList.Front_image[currentIndex]}/>
-      <button onClick={nextSlide}>Next</button>
-      {moviesList.map((_, index)=>{
-        <div className='hero_component'>
-        <h1>Riri <br /> Williams</h1>
-        <div className='hero_icons'>
-            <span>Action | Adventure | Sci-Fi</span>
-            <div className='hero_year'>
-                <Calendar1Icon />2018
-            </div>
-            <div className='hero_time'>
-                <Clock11Icon /> 2h 8m
-            </div>
-        </div>
-        </div>
-
-      })}
-
+    <>
+    <div className='hero'>
+      <div className="hero_component">
+        <h1>{currentMovie.title}</h1>
+      </div>
     </div>
+    </>
   )
-}}
+}
 
 export default Herosection

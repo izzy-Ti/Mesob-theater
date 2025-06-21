@@ -2,7 +2,8 @@ import { movies } from "../models/movies.js";
 import { connectDB } from "../config/db.js"
 
 export const movieAdd = async (req,res) =>{
-    const {title, description, category,Front_image ,duration, price, showtimes, image, availableSeats, trailer} = req.body
+    const {title, description, category ,duration, price, showtimes,  availableSeats, trailer} = req.body
+    const {Front_image, image} = req.file;
     const newMovie = new movies({
         title, 
         description, 
@@ -18,11 +19,12 @@ export const movieAdd = async (req,res) =>{
     await newMovie.save()
     res.send('Movie saved')
 }
-export const movieList = async (req,res) =>{
-    const movie = movies.find()
+export const movielist = async (req,res) =>{
+    const movie =await movies.find()
     .sort({ createdAt: -1 }) 
     .limit(10);  
     res.json(movie)
+    console.log('movies fetched')
 }
 export const movieSearch = async (req,res) =>{
     const {movieName} = req.body

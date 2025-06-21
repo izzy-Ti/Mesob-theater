@@ -1,11 +1,13 @@
 import express from 'express'
-import { movieAdd, movieList, movieSearch } from '../controller/movie.controller.js'
+import { movieAdd, movielist, movieSearch } from '../controller/movie.controller.js'
 import { verifySearch } from '../middleware/validate.middleware.js'
+import { upload } from '../config/multer.js'
 
 const router = express.Router()
 
-router.post('/movieAdd',movieAdd )
-router.get('/movielist', movieList )
-router.get('/moviesearch', verifySearch, movieSearch )
+
+router.post('/movieAdd',upload.single('image'),movieAdd )
+router.get('/movielist' ,movielist )
+router.get('/moviesearch' ,verifySearch, movieSearch )
 
 export default router
