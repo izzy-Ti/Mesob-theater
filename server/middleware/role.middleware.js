@@ -1,4 +1,5 @@
-import { person } from "../models/users";
+import { person } from "../models/users.js";
+import  jwt from "jsonwebtoken"
 
 export const verifyrole = async (req,res,next) =>{
     const token = req.cookies.token;

@@ -23,14 +23,32 @@ const Herosection = () => {
   }
   Newestmovies();
   },[])
+    const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === moviesList.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+    const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? moviesList.length - 1 : prevIndex - 1
+    );
+  };
 
   const currentMovie = moviesList[currentIndex]
   console.log({currentMovie})
   return (
     <>
-    <div className='hero'>
+    <div className='hero' style={{backgroundImage:  `url(${currentMovie?.Front_image?.replace('/upload/', '/upload/f_auto,q_auto:best/')})`}}>
       <div className="hero_component">
-        <h1>{currentMovie.title}</h1>
+        <div className="hero_arrow">
+        <h1 onClick={handlePrev}>&lt;</h1>
+        
+        <div className="hero_body">
+
+        </div>
+        <h1 onClick={handleNext}>&gt;</h1>
+        </div>
       </div>
     </div>
     </>

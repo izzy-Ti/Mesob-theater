@@ -13,7 +13,7 @@ const PORT = 3000
 app.use(cors()); 
 app.use(cookieParser())
 app.use(express.json())
-app.use('/user', verifyRegistration, verifyLogin, userrouter)
+app.use('/user',  userrouter)
 app.use('/movies', moviesrouter)
 app.use('/book', verifyToken, verifyBooking, bookingrouter)
 app.listen(PORT,() =>[
