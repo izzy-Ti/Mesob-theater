@@ -1,6 +1,7 @@
 import express from 'express'
 import { login, registration } from '../controller/auth.controller.js'
 import { verifyLogin, verifyRegistration } from '../middleware/validate.middleware.js'
+import { upload } from '../config/cloudnary.js'
 
 const router = express.Router()
 

@@ -10,14 +10,6 @@ const Navbar = ({setloggin}) => {
     const menu = useRef()
     const nav = useRef()
     const navigate = useNavigate()
-    const [showLogin, setshowLogin] = useState(false)
-    const [First_name,setFirst_name] = useState('')
-    const [Last_name,setLast_name] = useState('')
-    const [email,setemail] = useState('')
-    const [password,setpassword] = useState('')
-    const [username,setusername] = useState('')
-    const [profile, setprofile] = useState('')
-    const [age,setage] = useState('')
     const toggel = (e) =>{
         menu.current.style.top = '0px'
     }
@@ -33,20 +25,17 @@ const Navbar = ({setloggin}) => {
         <img src={assets.logo} alt="logo" className='nav_logo_img'/>
     </Link>
     <div className='nav_menu_items' ref={menu}>
-        <XIcon className='nav_xicon' onClick={close}/>
-        <Link to='/' onClick={() =>{scrollTo(0,0), close()}}>Home</Link>
-        <Link to='/movies' onClick={() =>{scrollTo(0,0), close()}}>Movies</Link>
-        <Link to='/' onClick={() =>{scrollTo(0,0), close()}}>Theaters</Link>
-        <Link to='/' onClick={() =>{scrollTo(0,0), close()}}>Releases</Link>
-        <Link to='/favorites' onClick={() =>{scrollTo(0,0), close()}}>Favorites</Link>
+        <XIcon className='nav_xicon' />
+        <Link className = "nav_links" to='/' >Home</Link>
+        <Link className = "nav_links" to='/movies' >Movies</Link>
+        <Link className = "nav_links" to='/' >Theaters</Link>
+        <Link className = "nav_links" to = '/releases' >Releases</Link>
+        <Link className = "nav_links" to='/favorites' >Favorites</Link>
     </div>
     <div className='nav_right'>
         <SearchIcon className='nav_search'/>
-        
-        <button onClick={() =>{setloggin(true)}} className='nav_login'>Login</button>
-
+        <button className='nav_login'>Login</button>
     </div>
-
     </div>
   )
 }

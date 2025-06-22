@@ -8,7 +8,7 @@ import dayjs from 'dayjs';
 
 
 const Movielist = () => {
-
+    const [movieId, setmovieId] = useState('')
     const [movielist , setmoviesList] = useState([])
     useEffect(()=>{
     const showList = async () =>{
@@ -24,6 +24,11 @@ const Movielist = () => {
     },[])
     const movies = movielist
     const navigate = useNavigate()
+    const addtoFavorite = async () =>{
+        const addtoFav = await axios.post(`http://localhost:3000/movies/addfav`, 
+            {movieId}
+        )
+    }
   return (
     <div className='movie_list'>
         <h1 className='list_header'>Latest movies</h1>
@@ -37,7 +42,7 @@ const Movielist = () => {
                     <h1>{dayjs(movie?.publish_date).format('YYYY') || 'Loading...'}</h1>
                     <div className="set_ticket">
                         <button onClick={() =>{navigate(`/movies/${movie?._id || 'Loading...'}`)}}>Buy ticket</button>
-                        <p>{movie?.rating || 'Loading...'}<StarIcon /></p>
+                        <p>{movie?.rating || 'Loading...'}<StarIcon onClick={(e) =>{e.target.style.color = "orange", setmovieId(movie._id) , {addtoFavorite}}}/></p>
                     </div>
                 </div>
             </div>

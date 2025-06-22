@@ -15,7 +15,6 @@
   inset: 0; 
   height: 85vh;
   background: rgba(0, 0, 0, 0.4); 
-  z-index: 2;
 }
 .hero img{
     width: 200px;
@@ -26,7 +25,7 @@
     gap: 20px;
     align-items: left;
     width: 30%;
-    z-index: 999;
+    z-index: 9;
 }
 .hero_component h1{
     font-size: 4rem;

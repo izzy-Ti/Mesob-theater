@@ -1,5 +1,6 @@
 import { movies } from "../models/movies.js";
 import { connectDB } from "../config/db.js"
+import { person } from "../models/users.js";
 
 export const movieAdd = async (req,res) =>{
     try{
@@ -48,4 +49,13 @@ export const deletemovie = async (req,res) =>{
     const movie = req.body
     await movies.findByIdAndDelete(movie)
     res.send('movie deleted')
+}
+export const addtoFav = async (req,res) => {
+    const movieId = req.body
+    const token = req.cookies.token;
+    const userId = jwt.verify(token, 'Writen#token');
+    const user = await  person.findById(userId.id, 
+        { $push: { favorites: movieId } },
+        { new: true })
+
 }

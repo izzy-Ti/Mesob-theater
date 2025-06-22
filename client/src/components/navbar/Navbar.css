@@ -23,6 +23,9 @@
     border-radius: 50px;
     background: rgba(255, 255, 255, 0.1);
 }
+.nav_links{
+    z-index: 9999;
+}
 .nav_right{
     display: flex;
     gap: 20px;

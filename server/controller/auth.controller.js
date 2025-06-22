@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 await connectDB()
 
 export const  registration = async (req,res) => {
-    const {First_name, Last_name, email, username, password, role} = req.body
+    const {First_name, Last_name, email, username, password,age,profile, role} = req.body
     const hashedPassword  = await bcrypt.hash(password, 10)
     const newUser = person({
         First_name,
@@ -18,14 +18,14 @@ export const  registration = async (req,res) => {
         password:hashedPassword
     })
     await newUser.save()
-    res.send(`user ${First_name} registered successfully`)
+    res.send(`true`)
 }
 
 export const login = async (req,res) => {
     const {username, password} = req.body
     const user = await person.findOne({username})
     if(!user || !(await bcrypt.compare(password , user.password))){
-        res.send('Invalid credentials')
+        res.send('false')
     }
     const token = jwt.sign({id: user._id}, 'Writen#token')
     res.cookie('token', token, {
@@ -33,5 +33,5 @@ export const login = async (req,res) => {
     secure: true,
     sameSite: 'strict'
     });
-    res.send('welcome')
+    res.send('true')
 }

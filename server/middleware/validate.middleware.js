@@ -1,6 +1,6 @@
 export const verifyRegistration = (req,res,next) =>{
-    const {First_name, Last_name, email, username, password, role} = req.body
-    if(!First_name || !Last_name || !email || !username || !password || !role){
+    const {First_name, Last_name, email, username, password} = req.body
+    if(!First_name || !Last_name || !email || !username || !password ){
         return res.status(400).json({ message: 'All fields are required' });
     } else {
         next();
