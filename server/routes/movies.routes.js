@@ -1,5 +1,5 @@
 import express from 'express'
-import { movieAdd, movielist, movieSearch } from '../controller/movie.controller.js'
+import { allmovie, deletemovie, movieAdd, movielist, movieSearch } from '../controller/movie.controller.js'
 import { verifySearch } from '../middleware/validate.middleware.js'
 import { upload } from '../config/cloudnary.js'
 import { verifyrole } from '../middleware/role.middleware.js'
@@ -13,6 +13,8 @@ router.post('/movieAdd',verifyToken,upload.fields([
     { name: 'Front_image', maxCount: 1 }
         ]),movieAdd )
 router.get('/movielist' ,movielist )
+router.get('/allmovie', allmovie)
 router.get('/moviesearch' ,verifySearch, movieSearch )
+router.get('/deletemovie',verifyrole ,deletemovie)
 
 export default router

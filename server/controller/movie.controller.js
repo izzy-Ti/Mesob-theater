@@ -3,7 +3,7 @@ import { connectDB } from "../config/db.js"
 
 export const movieAdd = async (req,res) =>{
     try{
-            const {title, description, category ,duration, price, showtimes,  availableSeats, trailer} = req.body
+            const {title, description, category,rating,publish_date ,duration, price, showtimes,  availableSeats, trailer} = req.body
         const image = req.files['image']?.[0]?.path
         const Front_image = req.files['Front_image']?.[0]?.path
         const newMovie = new movies({
@@ -11,6 +11,8 @@ export const movieAdd = async (req,res) =>{
             description, 
             category, 
             duration, 
+            rating,
+            publish_date,
             price, 
             showtimes, 
             image,
@@ -27,7 +29,11 @@ export const movieAdd = async (req,res) =>{
 export const movielist = async (req,res) =>{
     const movie =await movies.find()
     .sort({ createdAt: -1 }) 
-    .limit(10);  
+    .limit(4);  
+    res.json(movie)
+}
+export const allmovie = async (req,res) =>{
+    const movie = await movies.find()
     res.json(movie)
 }
 export const movieSearch = async (req,res) =>{
@@ -37,4 +43,9 @@ export const movieSearch = async (req,res) =>{
         res.send('no movie name sorry')
     }
     res.json(resultMovie)
+}
+export const deletemovie = async (req,res) =>{
+    const movie = req.body
+    await movies.findByIdAndDelete(movie)
+    res.send('movie deleted')
 }

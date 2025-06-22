@@ -1,0 +1,88 @@
+.hero{
+    background-clip: cover;
+    background-position: center;
+    background-size: 100% auto; 
+    background-repeat: no-repeat; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 85vh;
+    transition: all 0.7s ease;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0; 
+  height: 85vh;
+  background: rgba(0, 0, 0, 0.4); 
+  z-index: 2;
+}
+.hero img{
+    width: 200px;
+}
+.hero_component{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: left;
+    width: 30%;
+    z-index: 999;
+}
+.hero_component h1{
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 55px;
+}
+.hero_icons{
+    gap: 20px;
+    display: flex;
+}
+.hero_year{
+    display: flex;
+}
+.hero_time{
+    display: flex;
+}
+.hero_arrow{
+    margin: 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100vw;
+}
+.arrowR, .arrowL{
+    margin: 0px 30px;
+    width: 70px;
+    height: 70px;
+    color: rgba(255, 255, 255, 0.495);
+    text-shadow: 5px 5px 10px white;
+    transition: all 0.35s ease;
+}
+.arrowR:hover{
+    transform: scale(1.4);
+    transform: translateX(-10px);
+    transition: all 0.35s ease;
+}
+.arrowL:hover{
+    transform: scale(1.4);
+    transform: translateX(10px);
+    transition: all 0.35s ease;
+}
+.hero_title{
+    display: flex;
+    gap: 70px;
+}
+.hero_title_container{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.movie_title{
+    transition: 0.5s;
+    cursor:pointer;
+}
+.movie_title:hover{
+    transition: 0.5s;
+    transform: scale(1.3);
+}

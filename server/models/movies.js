@@ -10,6 +10,8 @@ const movieSchema = new mongoose.Schema({
      image: {type: String, required: true}, 
      Front_image: {type: String, required: true}, 
      availableSeats:{type: Number, required: true},
-     trailer: {type: String, required: true}
+     trailer: {type: String, required: true},
+     rating:{type:String, required:true},
+     publish_date:{type: Date, required:true}
 }, {timestamps:true})
 export const movies = mongoose.model('movies', movieSchema)

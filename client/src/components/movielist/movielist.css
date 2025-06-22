@@ -1,0 +1,60 @@
+.list_header{
+    text-align: center;
+    font-size: 4rem;
+    color: white;
+    margin: 30px 0px;
+}
+.movie_container{
+    display: flex;
+    padding:10px 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    background-color: rgb(56, 56, 56);
+}
+.list_img{
+    width: 300px;
+    height: 400px;
+}
+.movie_card{
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+}
+.movie_desc h3{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.set_ticket{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.set_ticket p{
+    display: flex;
+    gap: 10px;
+}
+.set_ticket button{
+    padding: 5px 15px;
+    border-radius:50px ;
+    background:linear-gradient(275deg,  #ab6906 10%, rgb(148, 72, 9) 80%);
+    margin-top: 20px;
+}
+.show_more{
+    margin: 70px 0px;
+    display: flex;
+    justify-content: center;
+    padding: 15px 25px;
+    background:linear-gradient(275deg,  #ab6906 10%, rgb(148, 72, 9) 80%);
+    border-radius: 10px;
+    transition:all 0.5s ease;
+}
+.show_more:hover{
+    gap: 30px;
+    transition:all 0.5s ease;
+}
+.movie_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

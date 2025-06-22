@@ -16,8 +16,12 @@ export const storage = new CloudinaryStorage({
   params: {
     folder: 'movies',
     allowed_formats: ['jpg', 'jpeg', 'png'],
-    transformation: [{ width: 500, height: 500, crop: 'limit' }],
-    resource_type: 'auto'
+    resource_type: 'auto',
+    quality: 'auto:best',
+    fetch_format: 'auto', 
+    transformation: [{ 
+      quality: 'auto:best' 
+    }]
   }
 });
 

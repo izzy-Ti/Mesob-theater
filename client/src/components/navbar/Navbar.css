@@ -39,6 +39,10 @@
 .nav_userpp{
     width: 300px;
 }
+.toggel{
+    position: absolute;
+    text-align: center;
+}
 @media (max-width: 768px) {
     .navbar{
         margin: 0;

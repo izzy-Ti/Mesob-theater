@@ -1,22 +1,32 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { assets } from '../assets/assets'
+import { assets } from '../../assets/assets'
 import './Navbar.css'
 import { MenuIcon, SearchIcon, TicketPlus, XIcon } from 'lucide-react'
 import {useClerk, UserButton, useUser} from '@clerk/clerk-react'
+import axios from 'axios'
 
-const Navbar = () => {
+const Navbar = ({setloggin}) => {
     const menu = useRef()
     const nav = useRef()
     const navigate = useNavigate()
+    const [showLogin, setshowLogin] = useState(false)
+    const [First_name,setFirst_name] = useState('')
+    const [Last_name,setLast_name] = useState('')
+    const [email,setemail] = useState('')
+    const [password,setpassword] = useState('')
+    const [username,setusername] = useState('')
+    const [profile, setprofile] = useState('')
+    const [age,setage] = useState('')
     const toggel = (e) =>{
         menu.current.style.top = '0px'
     }
     const close = () =>{
         menu.current.style.top = '-1000px'
     }
-    const {user} = useUser()
-    const {openSignIn} = useClerk()
+    const login = async () =>{
+        const response = await axios.post(`http://localhost:3000/movies/movielist`, {})
+    }
   return (
     <div className='navbar' ref={nav}>
     <Link to='/' className='nav_logo'>
@@ -32,16 +42,11 @@ const Navbar = () => {
     </div>
     <div className='nav_right'>
         <SearchIcon className='nav_search'/>
-        {
-            !user ? (<button className='nav_login' onClick={openSignIn}>Login</button>) : (
-            <UserButton className='nav_userpp'>
-                <UserButton.MenuItems>
-                    <UserButton.Action label='My Bookings' labelIcon={<TicketPlus width={15}/>} onClick={() =>navigate('/my-bookings')}/>
-                </UserButton.MenuItems>
-            </UserButton>)
-        }
-        <MenuIcon className='nav_menu_icon' onClick={toggel}/>
+        
+        <button onClick={() =>{setloggin(true)}} className='nav_login'>Login</button>
+
     </div>
+
     </div>
   )
 }
