@@ -41,7 +41,7 @@ const Movielist = () => {
                     <h3>{movie?.title || 'Loading...'}</h3>
                     <h1>{dayjs(movie?.publish_date).format('YYYY') || 'Loading...'}</h1>
                     <div className="set_ticket">
-                        <button onClick={() =>{navigate(`/movies/${movie?._id || 'Loading...'}`)}}>Buy ticket</button>
+                        <button onClick={() =>{navigate(`/movies/${movie._id}`)}}>Buy ticket</button>
                         <p>{movie?.rating || 'Loading...'}<StarIcon onClick={(e) =>{e.target.style.color = "orange", setmovieId(movie._id) , {addtoFavorite}}}/></p>
                     </div>
                 </div>

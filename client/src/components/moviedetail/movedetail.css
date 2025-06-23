@@ -1,0 +1,44 @@
+.allmovie_info{
+    margin: 150px 150px;
+    display: flex;
+    gap: 50px;
+}
+.allmovie_info img{
+    width: 350px;
+    height: 500px;
+}
+.movie_desc{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.movie_desc h2{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.para{
+    display: flex;
+    font-weight: bold;
+}
+.movie_description{
+    width: 80%;
+    font-size: 14px;
+    font-weight: lighter;
+}
+.movie_buttons{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+.trailer_button{
+    display: flex;
+    gap: 5px;
+    background-color: rgba(57, 57, 57, 0.5);
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.buy_ticket{
+    background:linear-gradient(275deg,  #ab6906 10%, rgb(148, 72, 9) 80%);
+    padding: 10px 20px;
+    border-radius: 10px;
+}

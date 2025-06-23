@@ -1,17 +1,16 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import Moviedetail from '../components/moviedetail/Moviedetail';
+import Movielist from '../components/movielist/Movielist';
 
 const MovieDetails = () => {
   const { id } = useParams(); 
-
-  useEffect(() => {
-
-    console.log('Movie ID:', id);
-  }, [id]);
   return (
     <div>
-       <div>Movie ID: {id}</div>
+      <Moviedetail movieId={id} />
+
+      <Movielist />
     </div>
   )
 }

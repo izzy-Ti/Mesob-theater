@@ -60,5 +60,9 @@ export const addtoFav = async (req,res) => {
     const user = await  person.findById(userId.id, 
         { $push: { favorites: movieId } },
         { new: true })
-
+}
+export const buymovie = async (req,res) =>{
+    const {movieid} = req.body
+    const movie = await movies.findById(movieid)
+    res.json(movie)
 }
