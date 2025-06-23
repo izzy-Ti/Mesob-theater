@@ -4,7 +4,9 @@ import { person } from "../models/users.js";
 
 export const movieAdd = async (req,res) =>{
     try{
-            const {title, description, category,rating,publish_date ,duration, price, showtimes,  availableSeats, trailer} = req.body
+        const {title, description, category,rating,
+            publish_date ,duration, price, showtimes,  
+            availableSeats, trailer} = req.body
         const image = req.files['image']?.[0]?.path
         const Front_image = req.files['Front_image']?.[0]?.path
         const newMovie = new movies({
@@ -25,6 +27,7 @@ export const movieAdd = async (req,res) =>{
         res.send('movie added')
     } catch (error) {
         res.send('Some thing is wrong')
+        console.log(error)
     }
 }
 export const movielist = async (req,res) =>{
@@ -34,7 +37,7 @@ export const movielist = async (req,res) =>{
     res.json(movie)
 }
 export const allmovie = async (req,res) =>{
-    const movie = await movies.find()
+    const movie = await movies.find().sort({ createdAt: -1 })
     res.json(movie)
 }
 export const movieSearch = async (req,res) =>{

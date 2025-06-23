@@ -4,6 +4,9 @@
     color: white;
     margin: 30px 0px;
 }
+.allmovie_list{
+    margin-top: 100px;
+}
 .movie_container{
     display: flex;
     padding:10px 30px;
@@ -14,11 +17,17 @@
 .list_img{
     width: 300px;
     height: 400px;
+    transition: 0.35s;
 }
 .movie_card{
+    flex-wrap: wrap;
     display: flex;
     justify-content: space-around;
     gap: 50px;
+}
+.movie_container:hover .list_img{
+    transform: translateY(-30px);
+    transition: 0.35s;
 }
 .movie_desc h3{
     font-size: 1.2rem;

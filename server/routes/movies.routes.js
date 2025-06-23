@@ -8,7 +8,7 @@ import { verifyToken } from '../middleware/auth.middleware.js'
 const router = express.Router()
 
 
-router.post('/movieAdd',verifyToken,upload.fields([
+router.post('/movieAdd',upload.fields([
     { name: 'image', maxCount: 1 },
     { name: 'Front_image', maxCount: 1 }
         ]),movieAdd )
