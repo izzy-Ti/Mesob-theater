@@ -1,0 +1,53 @@
+.footer{
+    background-color: black;
+    position: absolute;
+}
+.footer_components{
+    margin-left: 50px;
+    margin: 10px 50px;
+    width: 100vw;
+    background-color: black;
+}
+.footer_lowwer{
+    text-align: center;
+    margin:20px 0px;
+}
+.right_foot{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.right_foot p{
+    width: 600px;
+    line-height: 20px;
+}
+.footer_logo{
+    height: 100px;
+    width: 100px;
+}
+.store_img{
+    display: flex;
+    gap: 40px;
+    margin-bottom: 10px;
+}
+.footer_upper{
+    display: flex;
+    justify-content: space-around;
+}
+.middel_foot {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.footer_links{
+    display: flex;
+    flex-direction: column;
+}
+.middel_foot h3, .left_foot h3{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.contact_info{
+    display: flex;
+    gap: 7px;
+}

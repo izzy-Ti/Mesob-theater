@@ -1,4 +1,35 @@
-.tariler_container{
-    width: 200px;
+.trailer_container{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+}
+.trailer{
+    display: flex;
+    flex-direction: column;
+    gap: 200px;
+}
+.trailer_title{
+    font-size: 4rem;
+    text-align: center;
+}
+.main_trailer_container{
+    display: flex;
+    justify-content: center;
+}
+.main_trailer {
+    width: 900px;
+    height: 300px;
+    margin: 10px 10px;
+    border-radius: 50px;
+}
+.trailer_item{
+    width: 400px;
     height: 200px;
+    margin-bottom: 50px;
+}
+.trailer_grid{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
 }

@@ -16,10 +16,6 @@ const Login = () => {
   const [signstatus, setsignstatus] = useState()
   const [showerror, setshowerror] = useState(false)
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0]
-    setImageFile(file)
-  }
   const register = async () => {
   const newUser = await axios.post(`http://localhost:3000/user/registration`,{
       First_name,
@@ -34,8 +30,8 @@ const Login = () => {
     const oldUser = await axios.post(`http://localhost:3000/user/login`,{
       username,
       password
-    })
-    setloginstatus(oldUser.data)
+    }, { withCredentials: true })
+    setloginstatus(true)
   }
   useEffect(() => {
     if (signstatus) {
@@ -48,6 +44,7 @@ const Login = () => {
   useEffect(() => {
     if (loginstatus) {
       toast.success('Login successful!');
+      window.location.reload()
       navigate('/');
     } else if (loginstatus === false) {
       toast.error('invalid credentials')

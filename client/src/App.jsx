@@ -9,6 +9,7 @@ import Favorite from './pages/Favorite'
 import {Toaster} from 'react-hot-toast'
 import Footer from './components/footer/Footer'
 import Releases from './pages/releases.jsx'
+import { useState } from 'react'
 
 const App = () => {
   const isAdminRoute = useLocation().pathname.startsWith('/admin')
@@ -16,7 +17,7 @@ const App = () => {
   return (
     <>
       <Toaster />
-      {!isAdminRoute && <Navbar/>}
+      {!isAdminRoute && <Navbar />}
       <Routes>
           <Route path = '/' element = {<Home />}/>
           <Route path = '/movies' element = {<Movies />}/>
