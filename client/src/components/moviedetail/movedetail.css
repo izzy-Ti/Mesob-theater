@@ -42,3 +42,10 @@
     padding: 10px 20px;
     border-radius: 10px;
 }
+.Heart {
+    background-color: rgba(92, 92, 92, 0.256);
+    border-radius: 50%;
+    padding: 9px 9px;
+    width: 40px;
+    height: 40px;
+}

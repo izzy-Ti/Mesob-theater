@@ -1,0 +1,61 @@
+.booker{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    gap: 50px;
+}
+.choose_date{
+    margin: 30px 130px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ab69067d;
+    padding: 10px 50px;
+    border-radius: 15px;
+    width: 70%;
+}
+.choose_seat{
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.choose_date h3{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.dates{
+    display: flex;
+    gap: 20px;
+}
+.singel_date{
+    background-color: rgba(56, 56, 56, 0.516);
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 20px 20px;
+}
+.seatlist{
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 5px 5px;
+    border: 2px solid #ab6906;
+    border-radius: 10px;
+}
+.seatlist:hover{
+    background-color: rgba(82, 82, 82, 0.436);
+}
+.seatlist button.active{
+    background-color: rgba(82, 82, 82, 0.436);
+}
+.screen_img{
+    display: flex;
+    width: 800px;
+}
+.seat_ch{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.seat_ch h1{
+    font-size: 3rem;
+}
