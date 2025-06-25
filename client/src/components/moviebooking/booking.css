@@ -19,6 +19,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
+.choose_seat button{
+    background: transparent;
+}
 .choose_date h3{
     font-size: 1.5rem;
     font-weight: bold;
@@ -27,23 +30,21 @@
     display: flex;
     gap: 20px;
 }
-.singel_date{
+.singel_date p{
     background-color: rgba(56, 56, 56, 0.516);
     padding: 10px 20px;
     border-radius: 10px;
     margin: 20px 20px;
+    cursor: pointer;
 }
-.seatlist{
+.seatlist button{
     padding: 10px 15px;
     cursor: pointer;
     margin: 5px 5px;
     border: 2px solid #ab6906;
     border-radius: 10px;
 }
-.seatlist:hover{
-    background-color: rgba(82, 82, 82, 0.436);
-}
-.seatlist button.active{
+.seatlist button:hover{
     background-color: rgba(82, 82, 82, 0.436);
 }
 .screen_img{
@@ -58,4 +59,29 @@
 }
 .seat_ch h1{
     font-size: 3rem;
+}
+.selectedseat{
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 5px 5px;
+    border: 2px solid #ab6906;
+    border-radius: 10px;
+}
+.seatselected{
+    display: flex;
+    gap: 10px;
+    padding: 20px 100px;
+    background-color: rgba(80, 80, 80, 0.568);
+    border-radius: 10px;
+    flex-wrap: wrap;
+    max-width: 900px; 
+}
+.order_booking{
+    background-color: #ab6906bb;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 1.3rem;
+}
+.order_booking:hover{
+    background-color: #ab6906 ;
 }

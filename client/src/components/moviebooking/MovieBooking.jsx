@@ -14,11 +14,14 @@ const seat = ["A1","A2","A3","A4","A5","A6","A7","A8","A9","A10",
                 "F1","F2","F3","F4","F5","F6","F7","F8","F9","F10",
                 "G1","G2","G3","G4","G5","G6","G7","G8","G9","G10"
 ] 
+    const [selectedSeat, setselectedSeat] = useState([])
+    const [selecteddate, setselecteddate] = useState([])
     const [movie, setmovie] = useState(null)
     const [logstate, setlogstate] = useState()
     const [date, setdate] = useState('')
     const [amount, setamount] = useState('')
     const [seats, setseats] = useState('')
+    const [clicked, setClicked] = useState(false);
     const detailBooking = async () =>{
         const response = await axios.post(`http://localhost:3000/movies/buymovie`,
             {movieid: movieId,
@@ -35,6 +38,17 @@ const seat = ["A1","A2","A3","A4","A5","A6","A7","A8","A9","A10",
         }
         movies()
     },[])
+    const Booking = async () =>{
+      const totalseats = selectedSeat.length
+      const moviePrice = Number(movie?.price)
+      const pay = (moviePrice*totalseats)
+      const response = await axios.post(`http://localhost:3000/book/booking`,{
+        movieId: movieId,
+        date : selecteddate,
+        seats: selectedSeat,
+        amount: pay
+      })
+    }
     useEffect(() => {
         if (logstate !== undefined) {
         if (logstate.success) {
@@ -44,7 +58,30 @@ const seat = ["A1","A2","A3","A4","A5","A6","A7","A8","A9","A10",
         }
         }
     }, [])
-    console.log(movie)
+    const seatHndler = (e) => {
+      const seat = e.target.innerText;
+      setselectedSeat((s) => {
+        if (s.includes(seat)) {
+          e.target.style.background = "none";
+          return s.filter((item) => item !== seat);
+        } else {
+          e.target.style.background = "#ab69069c";
+          return [...s, seat];
+        }
+      });
+    };
+    const selectdate = (e) =>{
+      const date = e.target.innerText;
+      setselecteddate((s)=>{
+      if(!s.includes(date)){
+        e.target.style.border = "2px solid white"
+        return [...s, date]
+      } else {
+        e.target.style.border = "none"
+        return s.filter(i=> i !== date)
+      }
+      })
+    }
   return (
     <div className='booker'>
       <div className="choose_date">
@@ -53,8 +90,7 @@ const seat = ["A1","A2","A3","A4","A5","A6","A7","A8","A9","A10",
         {movie?.showtimes?.map((date,index) => {
             return (
             <div className='singel_date' key={index}>
-            <p>{dayjs(date.showtimes).format('D') }</p>
-            <p>{dayjs(date.showtimes).format('MMM') }</p>
+            <p  onClick={selectdate}>{dayjs(date.showtimes).format('D') } {dayjs(date.showtimes).format('MMM') }</p>
             </div>)
         })}
       </div>
@@ -66,11 +102,20 @@ const seat = ["A1","A2","A3","A4","A5","A6","A7","A8","A9","A10",
       </div>
       <div className='choose_seat'>
         {seat.map((seat,index) =>{
-            return (<div className="seatlist">
-                <button key={index}>{seat}</button>
+            return (<div className='seatlist' >
+                <button key={index} onClick={seatHndler}>{seat}</button>
             </div>)
         })}
       </div>
+      <div className="seatselected">
+        {selectedSeat.map((seat,index) =>{
+          return(<p className='selectedseat' >{seat}</p>)
+        })}
+      </div>
+      <div className="book_button">
+        <button onClick={Booking} className='order_booking'>Place Booking</button>
+      </div>
+
     </div>
   )
 }
