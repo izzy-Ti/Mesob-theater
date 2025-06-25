@@ -11,7 +11,7 @@ const MovieDetails = () => {
   return (
     <div>
       <Moviedetail movieId={id} setBuynow = {setBuynow}/>
-      {buynow &&  <MovieBooking movieId={id} />}
+      {buynow &&  <MovieBooking movieId={id} setBuynow = {setBuynow}/>}
       <Movielist />
     </div>
   )

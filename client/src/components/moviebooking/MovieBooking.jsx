@@ -5,7 +5,7 @@ import axios from 'axios'
 import dayjs from 'dayjs';
 import { assets } from '../../assets/assets';
 
-const MovieBooking = ({ movieId }) => {
+const MovieBooking = ({ movieId ,setBuynow}) => {
 const seat = ["A1","A2","A3","A4","A5","A6","A7","A8","A9","A10",
                 "B1","B2","B3","B4","B5","B6","B7","B8","B9","B10",
                 "C1","C2","C3","C4","C5","C6","C7","C8","C9","C10",
@@ -22,13 +22,14 @@ const seat = ["A1","A2","A3","A4","A5","A6","A7","A8","A9","A10",
     const [amount, setamount] = useState('')
     const [seats, setseats] = useState('')
     const [clicked, setClicked] = useState(false);
+    const [bookingstat, setbookingstat] = useState();
     const detailBooking = async () =>{
         const response = await axios.post(`http://localhost:3000/movies/buymovie`,
             {movieid: movieId,
                 date,
                 amount,
                 seats
-            })
+            }, { withCredentials: true })
         setlogstate(response.data)
     }
     useEffect(() =>{
@@ -47,8 +48,19 @@ const seat = ["A1","A2","A3","A4","A5","A6","A7","A8","A9","A10",
         date : selecteddate,
         seats: selectedSeat,
         amount: pay
-      })
+      }, { withCredentials: true })
+      setbookingstat(response.data)
     }
+    useEffect(()=>{
+      if (bookingstat === undefined) return; 
+      if(bookingstat.success){
+        toast.success('Your Booking successfully placed')
+        setBuynow(false)
+      } else {
+        toast.error('Please login or check ur Form')
+      }
+    }, [bookingstat])
+
     useEffect(() => {
         if (logstate !== undefined) {
         if (logstate.success) {
@@ -108,9 +120,12 @@ const seat = ["A1","A2","A3","A4","A5","A6","A7","A8","A9","A10",
         })}
       </div>
       <div className="seatselected">
+        <p>Selected seats</p>
+        <div className='flex_seats'>
         {selectedSeat.map((seat,index) =>{
           return(<p className='selectedseat' >{seat}</p>)
         })}
+        </div>
       </div>
       <div className="book_button">
         <button onClick={Booking} className='order_booking'>Place Booking</button>
