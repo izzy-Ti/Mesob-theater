@@ -10,7 +10,7 @@ const peronSchema = new mongoose.Schema({
     profile:{type:String, default:""},
     role: {type:String, enum: ['user', 'admin'], required:true, default:'user'},
     favorites: {type: [String]},
-    bookings: {type: [String]},
+    bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'booking' }],
     waitelist: {type: [String]}
 },{timestamps:true, minimize:false})
 export const person = mongoose.model("person", peronSchema)

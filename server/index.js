@@ -20,7 +20,7 @@ app.use(cookieParser())
 app.use(express.json())
 app.use('/user',  userrouter)
 app.use('/movies', moviesrouter)
-app.use('/book', verifyToken, verifyBooking, bookingrouter)
+app.use('/book', bookingrouter)
 app.listen(PORT,() =>[
     console.log(`server is running on http://localhost:${PORT}`)
 ])

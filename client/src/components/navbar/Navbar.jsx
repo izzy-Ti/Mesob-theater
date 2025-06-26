@@ -42,7 +42,6 @@ const Navbar = ({setloggin}) => {
     const close = () =>{
         menu.current.style.top = '-1000px'
     }
-    console.log(loggedout)
   return (
     <div className='navbar' ref={nav}>
     <Link to='/' className='nav_logo'>
@@ -52,9 +51,9 @@ const Navbar = ({setloggin}) => {
         <XIcon className='nav_xicon' />
         <Link className = "nav_links" to='/' >Home</Link>
         <Link className = "nav_links" to='/movies' >Movies</Link>
-        <Link className = "nav_links" to='/' >Theaters</Link>
         <Link className = "nav_links" to = '/releases' >Releases</Link>
         <Link className = "nav_links" to='/favorites' >Favorites</Link>
+        <Link className = "nav_links" to='/my-bookings' >My bookings</Link>
     </div>
     <div className='nav_right'>
         <SearchIcon className='nav_search'/>

@@ -1,0 +1,51 @@
+.mybookings{
+    margin-top: 180px;
+}
+.mybookings h1{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 8dvh;
+}
+
+.booking_list img{
+    width: 280px;
+    height: 150px;
+}
+.booking_box{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 30px;
+    margin: 50px 80px;
+    background-color: #ab690697;
+    border-radius: 15px;
+    width: 60vw;
+}
+.inner_img{
+    display: flex;
+    gap: 5px;
+}
+.all_seats{
+    display: flex;
+
+}
+.all_seats div{
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    width: 100px;
+}
+
+.inner_price h2, .inner_title h2{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.inner_title{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.inner_price{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

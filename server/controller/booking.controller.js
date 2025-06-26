@@ -1,5 +1,6 @@
 import { booking } from "../models/booking.js";
 import { person } from "../models/users.js";
+import { movies } from "../models/movies.js";
 import jwt from 'jsonwebtoken';
 
 
@@ -21,6 +22,22 @@ export const moviebooking = async (req,res) =>{
         amount
     })
     await newbooking.save()
+    const user = await person.findByIdAndUpdate(userId,{$push: {bookings:newbooking._id}})
+    await user.save()
     return res.json({ success: true });
-    console.log('booking placed')
+
+}
+export const showBooking = async (req,res) =>{
+    try{
+        const token = req.cookies.token
+        const decoded = jwt.verify(token, 'Writen#token');
+        const userid = decoded.id
+        const user = await person.findById(userid)
+        const bookings = user.bookings
+        const book = await booking.find({ _id: { $in: bookings } }).populate('movieId').sort({ createdAt: -1 });
+        res.json({ success: true, bookings: book })
+        console.log(book)
+    } catch(error) {
+        res.send(error)
+    }
 }
